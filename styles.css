@@ -188,7 +188,8 @@ p,
 small,
 input,
 #sitemap-social a,
-input::placeholder {
+input::placeholder,
+blockquote {
   font-family: var(--font-family-body);
 }
 body > header,
@@ -225,7 +226,8 @@ h3 {
   font-weight: var(--display-extrabold);
 }
 
-p {
+p,
+.testimonial h3 {
   font-size: var(--body-md-size);
 }
 
@@ -400,14 +402,18 @@ nav ul {
   display: inline;
 } */
 
-#data header {
+#data header,
+#testimonials header {
   align-items: center;
 }
 
 #testimonials header {
-  align-items: end;
   justify-self: center;
   align-self: start;
+}
+
+#testimonials .subheading {
+  padding-top: 0.4em;
 }
 
 #data,
@@ -420,13 +426,76 @@ nav ul {
 }
 
 #testimonials {
+  padding-left: var(--page-margin);
+  padding-right: var(--page-margin);
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
+  position: relative;
+}
+
+button.slider {
+  background-color: rgba(255, 255, 255, 0);
+  height: 70px;
+  width: 70px;
+  cursor: grab;
+}
+
+#slider-btns {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 #testimonials .btn {
   margin-top: 2.5em;
 }
+
+#testimonial-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  overflow: hidden;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+  width: 250px;
+  padding: 3em;
+  border-radius: var(--card-corner-r);
+  border: 2.5px solid var(--teal);
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.testimonial p {
+  color: var(--teal);
+  margin-top: 0.3em;
+}
+
+blockquote {
+  margin-bottom: 3em;
+  line-height: 1.4em;
+}
+
+.testimonial img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
 /* - - - - - - ----------- GENERAL END -------------- - - -   
 - - - how -------- HOW SECTION ----------- - - - - - - - */
 #how {

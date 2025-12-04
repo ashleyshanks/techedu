@@ -15,9 +15,12 @@
     <meta name="robots" content="index,follow" />
     <title>TechForward</title>
     <!-- ADD FAVICON -->
-    <link rel="preload" as="video" href="TechForward.mp4" type="video/mp4" />
+    <!-- <link rel="preload" as="video" href="TechForward.mp4" type="video/mp4" /> -->
     <link rel="stylesheet" href="https://use.typekit.net/cxn7ebf.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- <div id="videoWrapper">
@@ -193,7 +196,68 @@
           <h2>Success Stories</h2>
           <p class="subheading">Stories that showcase real results.</p>
         </header>
-        <div id="testimonial-slider"></div>
+        <div id="slider-btns">
+          <!-- <button type="button" id="prevBtn" class="slider">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#1abc9d"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M13 8L9 12M9 12L13 16M9 12H21M19.4845 7C17.8699 4.58803 15.1204 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C15.1204 21 17.8699 19.412 19.4845 17"
+                  stroke="#1abc9d"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button> -->
+          <!-- <button type="button" id="nextBtn" class="slider">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#1abc9d"
+              transform="matrix(-1, 0, 0, 1, 0, 0)"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M13 8L9 12M9 12L13 16M9 12H21M19.4845 7C17.8699 4.58803 15.1204 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C15.1204 21 17.8699 19.412 19.4845 17"
+                  stroke="#1abc9d"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button> -->
+        </div>
+        <div id="testimonial-slider">
+          <!-- <div class="testimonial">
+            <img src="images/boylearn.png" alt="" />
+            <blockquote>
+              "This platform made learning Biology fun and easy. I improved a
+              lot in just a few weeks!"
+            </blockquote>
+            <h3>Gloria Martinez</h3>
+            <p>Math Teacher</p>
+          </div> -->
+        </div>
         <a href="#" class="btn more">View More</a>
       </section>
     </main>
@@ -218,7 +282,7 @@
 
         <section id="sitemap-social">
           <h2 class="sr-only">Sitemap and Socials</h2>
-          <div id="general">
+          <div>
             <h3>Quick Links</h3>
             <ul>
               <li>
@@ -236,7 +300,7 @@
             </ul>
           </div>
 
-          <div id="partner-linkd">
+          <div>
             <h3>For Partners</h3>
             <ul>
               <li>
@@ -300,6 +364,7 @@
         >
       </div>
     </footer>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
