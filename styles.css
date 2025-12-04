@@ -442,8 +442,7 @@ nav ul {
 }
 
 #how header img {
-  margin: 0 auto;
-  padding-left: 1em;
+  align-self: center;
 }
 
 #how h2 {
