@@ -23,11 +23,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
-    <!-- <div id="videoWrapper">
-      <video id="heroVideo" autoplay muted playsinline>
-        <source src="TechForward.mp4" type="video/mp4" />
-      </video>
-    </div> -->
+    <div id="videoWrapper"></div>
+
     <header>
       <h1 class="sr-only">TechForward</h1>
       <div id="announcement-bar"></div>
@@ -364,6 +361,42 @@
         >
       </div>
     </footer>
+
+    <div class="popup-overlay hidden">
+      <div id="form-popup">
+        <p class="subheading">Hello! Welcome to TechForward</p>
+        <form id="myForm">
+          <label for="name">What's your name?</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Please enter your name."
+            required
+          />
+
+          <p>Tell us a little more about you!</p>
+          <div>
+            <input type="checkbox" id="student" name="role" value="Student" />
+            <label for="student">Student</label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="parent" name="role" value="Parent" />
+            <label for="parent">Parent</label>
+          </div>
+          <div>
+            <input type="checkbox" id="family" name="role" value="Family" />
+            <label for="family">Family</label>
+          </div>
+          <div>
+            <input type="checkbox" id="educator" name="role" value="Educator" />
+            <label for="educator">Educator</label>
+          </div>
+          <button type="submit" id="enter">Let's Go!</button>
+        </form>
+      </div>
+    </div>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="main.js"></script>
   </body>

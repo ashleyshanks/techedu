@@ -188,6 +188,7 @@ p,
 small,
 input,
 #sitemap-social a,
+label,
 input::placeholder,
 blockquote {
   font-family: var(--font-family-body);
@@ -202,7 +203,8 @@ h3,
 }
 
 nav a,
-a.btn {
+a.btn,
+#enter {
   font-size: var(--display-md-size);
 }
 
@@ -227,7 +229,8 @@ h3 {
 }
 
 p,
-.testimonial h3 {
+.testimonial h3,
+label {
   font-size: var(--body-md-size);
 }
 
@@ -377,8 +380,10 @@ nav ul {
   overflow: hidden;
 }
 
-.hidden {
-  display: none;
+.hidden,
+#popup-overlay.hidden,
+.popup-overlay.hidden {
+  display: none !important;
 }
 
 #data,
@@ -619,19 +624,19 @@ footer p {
   flex-direction: row;
 }
 
-form {
+footer form {
   display: grid;
   grid-template-columns: 5fr 1fr;
   grid-gap: 0.9em;
   margin-top: 1.3em;
 }
 
-input,
+#email,
 button {
   border: none;
 }
 
-input {
+#email {
   border-radius: var(--card-corner-r);
   background-color: var(--lt-navy);
   height: 50px;
@@ -648,7 +653,7 @@ button {
   width: 50px;
 }
 
-input::placeholder {
+#email::placeholder {
   color: rgba(255, 255, 255, 0.772);
   font-size: var(--body-small-size);
 }
@@ -663,3 +668,77 @@ input::placeholder {
 }
 
 /* - - -  - - - -------- FOOTER END ----------- - - - - - -  */
+#form-popup p.subheading {
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+
+#form-popup p,
+#form-popup form > label {
+  font-weight: 600;
+}
+
+#form-popup {
+  position: fixed;
+  display: inline-flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: var(--card-corner-r);
+  padding: 2em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-popup form p {
+  margin-top: 0.5em;
+}
+
+#name {
+  padding: 0.5em 0;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+#form-popup form p,
+#form-popup form > label {
+  margin-bottom: 0.4em;
+}
+
+#form-popup div {
+  margin-bottom: 0.2em;
+}
+
+#enter {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1em;
+  color: white;
+  background-color: var(--teal);
+  cursor: pointer;
+}
+
+.popup-overlay {
+  position: fixed; /* Stay in place on scroll */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+
+  z-index: 9999; /* On top */
+}
+
+#announcement-bar {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,30 +1,95 @@
 "use strict";
 
-// const videoWrapper = document.getElementById("videoWrapper");
-// const introVideo = document.getElementById("heroVideo");
-
-// introVideo.addEventListener("ended", () => {
-//   videoWrapper.style.opacity = "0";
-
-//   setTimeout(() => {
-//     videoWrapper.remove();
-//   }, 1000);
-// });
-
 $(() => {
-  const $testimonials = $("#testimonial-slider");
+  const savedName = localStorage.getItem("userName");
+  console.log("savedName is");
+  console.log(savedName);
+  if (savedName) {
+    $("#name").val(savedName);
+    welcome(savedName);
+  } else {
+    console.log("No name!");
+    getName();
+  }
 
-  let testimonialHTML = "";
+  loadTestimonials();
 
-  $.ajax({
-    url: "https://api.jsonbin.io/v3/b/6931184943b1c97be9d6b7b0",
-    method: "GET",
-    dataType: "json",
-  }).done((data) => {
-    let testimonials = data.record.testimonials;
+  let count = localStorage.getItem("pageLoads");
+  count = count ? parseInt(count) + 1 : 1;
+  localStorage.setItem("pageLoads", count);
 
-    testimonials.forEach((item) => {
-      let testimonial = `
+  // console.log("Page has loaded:", count, "times");
+
+  if (count === 1 || count % 10 === 0) {
+    playVideo();
+  }
+
+  function playVideo() {
+    const video = `<video id="heroVideo" autoplay muted playsinline>
+        <source src="TechForward.mp4" type="video/mp4" />
+      </video>`;
+
+    const $videoWrapper = $("#videoWrapper");
+    $videoWrapper.prepend(video);
+
+    setTimeout(() => {
+      $videoWrapper.fadeOut(1000, () => {
+        $videoWrapper.html("");
+      });
+    }, 2000);
+  }
+
+  function getName() {
+    const $formPopup = $("#form-popup");
+    const $overlay = $(".popup-overlay");
+    const $form = $("#myForm");
+    const $submit = $("#enter");
+    let name = "";
+
+    if (!name) {
+      $formPopup.removeClass("hidden");
+      $overlay.removeClass("hidden");
+    } else {
+      $formPopup.addClass("hidden");
+      $overlay.addClass("hidden");
+    }
+
+    $form.on("submit", (e) => {
+      e.preventDefault();
+
+      name = $("#name").val();
+      name = name.charAt(0).toUpperCase() + name.slice(1);
+
+      if (name) {
+        $formPopup.addClass("hidden");
+        $overlay.addClass("hidden");
+      }
+
+      localStorage.setItem("userName", name);
+      welcome(name);
+    });
+  }
+
+  function welcome(name) {
+    let welcome = `<p>Welcome to the future, ${name}!</p>`;
+    const $announcements = $("#announcement-bar");
+    $announcements.prepend(welcome);
+  }
+
+  function loadTestimonials() {
+    const $testimonials = $("#testimonial-slider");
+
+    let testimonialHTML = "";
+
+    $.ajax({
+      url: "https://api.jsonbin.io/v3/b/6931184943b1c97be9d6b7b0",
+      method: "GET",
+      dataType: "json",
+    }).done((data) => {
+      let testimonials = data.record.testimonials;
+
+      testimonials.forEach((item) => {
+        let testimonial = `
       <div class='testimonial'>
       <img src="${item.imageURL} alt="">
       <blockquote>
@@ -36,17 +101,13 @@ $(() => {
       </div>
       </div>
       `;
-      testimonialHTML += testimonial;
-    });
+        testimonialHTML += testimonial;
+      });
 
-    $testimonials.prepend(testimonialHTML);
-    // const $prevBtn = $("#prevBtn");
-    // const $nextBtn = $("#nextBtn");
-    // console.log($prevBtn);
+      $testimonials.prepend(testimonialHTML);
+      const $arrowBtns = $("#slider-btns");
 
-    const $arrowBtns = $("#slider-btns");
-
-    const prevArrow = `<button type="button" id="prevBtn" class="slider slick-prev">
+      const prevArrow = `<button type="button" id="prevBtn" class="slider slick-prev">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -71,7 +132,7 @@ $(() => {
         </svg>
       </button>`;
 
-    const nextArrow = `
+      const nextArrow = `
         <button type="button" id="nextBtn" class="slider slick-next">
           <svg
             viewBox="0 0 24 24"
@@ -99,14 +160,14 @@ $(() => {
         </button>
     `;
 
-    $($testimonials).slick({
-      arrows: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      // appendArrows: $("#testimonials"),
-      prevArrow: prevArrow,
-      nextArrow: nextArrow,
-      appendArrows: $arrowBtns,
+      $($testimonials).slick({
+        arrows: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: prevArrow,
+        nextArrow: nextArrow,
+        appendArrows: $arrowBtns,
+      });
     });
-  });
+  }
 });
