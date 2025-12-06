@@ -51,8 +51,10 @@ $(() => {
     let name = "";
 
     if (!name) {
-      $formPopup.removeClass("hidden");
-      $overlay.removeClass("hidden");
+      setTimeout(() => {
+        $formPopup.removeClass("hidden");
+        $overlay.removeClass("hidden");
+      }, 3800);
     } else {
       $formPopup.addClass("hidden");
       $overlay.addClass("hidden");

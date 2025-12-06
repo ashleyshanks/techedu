@@ -735,6 +735,7 @@ button {
   background-color: white;
   border-radius: var(--card-corner-r);
   padding: 2em;
+  z-index: 500;
 }
 
 form {
