@@ -198,7 +198,8 @@ body > header,
 p.subheading,
 h2,
 h3,
-.btn {
+.btn,
+#stats div {
   font-family: var(--font-family-display);
 }
 
@@ -213,12 +214,14 @@ nav a {
   font-weight: var(--display-extrabold);
 }
 
-.subheading {
+.subheading,
+#stats p {
   font-size: var(--display-lg-size);
   font-weight: var(--display-light);
 }
 
-h2 {
+h2,
+#stats span {
   font-size: var(--display-xl-xl-size);
   font-weight: var(--display-black);
 }
@@ -348,12 +351,24 @@ nav ul {
   background-color: var(--orange);
 }
 
+.btn.cta:hover {
+  background-color: #e93a2a;
+}
+
 .btn.ghost {
   background-color: var(--lt-navy);
 }
 
+.btn.ghost:hover {
+  background-color: #0d2c4b;
+}
+
 .btn.more {
   background-color: var(--teal);
+}
+
+.btn.more:hover {
+  background-color: #05ad8f;
 }
 
 #how .btn.more {
@@ -384,6 +399,41 @@ nav ul {
 #popup-overlay.hidden,
 .popup-overlay.hidden {
   display: none !important;
+}
+
+#stats {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#stats div {
+  position: absolute;
+  top: 70%;
+}
+
+#stats p {
+  color: var(--navy);
+  line-height: 2.2em;
+}
+
+#stats p:first-of-type span {
+  color: var(--orange);
+}
+
+#stats p:nth-of-type(2) span {
+  color: var(--teal);
+}
+
+#stats p:nth-of-type(3) span {
+  color: var(--yellow);
+}
+
+#canvas {
+  margin: 0 auto;
 }
 
 #data,

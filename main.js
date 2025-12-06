@@ -1,30 +1,34 @@
 "use strict";
 
 $(() => {
-  const savedName = localStorage.getItem("userName");
-  console.log("savedName is");
-  console.log(savedName);
-  if (savedName) {
-    $("#name").val(savedName);
-    welcome(savedName);
-  } else {
-    console.log("No name!");
-    getName();
-  }
-
+  loadStorage();
   loadTestimonials();
+  drawCircles();
 
-  let count = localStorage.getItem("pageLoads");
-  count = count ? parseInt(count) + 1 : 1;
-  localStorage.setItem("pageLoads", count);
+  function loadStorage() {
+    const savedName = localStorage.getItem("userName");
+    console.log("savedName is");
+    console.log(savedName);
+    if (savedName) {
+      $("#name").val(savedName);
+      welcome(savedName);
+    } else {
+      console.log("No name!");
+      getName();
+    }
 
-  // console.log("Page has loaded:", count, "times");
+    let count = localStorage.getItem("pageLoads");
+    count = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem("pageLoads", count);
 
-  if (count === 1 || count % 10 === 0) {
-    playVideo();
+    // console.log("Page has loaded:", count, "times");
+
+    if (count === 1 || count % 10 === 0) {
+      toggleVideo();
+    }
   }
 
-  function playVideo() {
+  function toggleVideo() {
     const video = `<video id="heroVideo" autoplay muted playsinline>
         <source src="TechForward.mp4" type="video/mp4" />
       </video>`;
@@ -68,6 +72,57 @@ $(() => {
       localStorage.setItem("userName", name);
       welcome(name);
     });
+  }
+
+  window.addEventListener("resize", drawCircles);
+  function drawCircles() {
+    const wrapper = document.getElementById("stats");
+    let rect = wrapper.getBoundingClientRect();
+    var can = document.getElementById("canvas");
+    can.width = rect.width;
+    can.height = rect.height;
+    const WIDTH = can.width;
+    const HEIGHT = can.height;
+    const ctx = canvas.getContext("2d");
+
+    drawCircle(0.1);
+    drawCircle(0.385);
+    drawCircle(0.67);
+    drawCircle(0.1, "#e74b3c", 0.71, "71%");
+    drawCircle(0.385, "#1abc9d", 0.96, "96%");
+    drawCircle(0.67, "#f8d236", 0.82, "82%");
+
+    function drawCircle(x, color = "white", percent = 1, text = "") {
+      x *= can.width;
+      const size = can.width / 9;
+      let mtpie = Math.PI * 2;
+
+      let startAngle = 0;
+      let endAngle = mtpie;
+
+      if (percent < 1) {
+        startAngle = Math.PI / 2;
+        endAngle = startAngle + percent * mtpie;
+      }
+
+      ctx.beginPath();
+      ctx.arc(size + x, size + 100, size, startAngle, endAngle);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 30;
+      ctx.stroke();
+
+      if (text) {
+        ctx.fillStyle = color;
+        ctx.font = `bold ${size / 2}px Montserrat`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        const textX = size + x;
+        const textY = size + 100;
+
+        ctx.fillText(text, textX, textY);
+      }
+    }
   }
 
   function welcome(name) {
